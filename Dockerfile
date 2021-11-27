@@ -74,7 +74,7 @@ RUN apt-get update && \
     curl -O https://cdn.azul.com/zulu/bin/zulu-repo_1.0.0-3_all.deb && \
 
     # install the package
-    sudo apt-get install ./zulu-repo_1.0.0-3_all.deb && \
+    apt-get install ./zulu-repo_1.0.0-3_all.deb && \
 
     # refresh
     apt-get update && \
