@@ -69,10 +69,10 @@ RUN apt-get update && \
     apt-get update && \
 
     # install
-    apt-get install -y adoptopenjdk-$JAVA_VERSION_MAJOR-$JAVA_OPT$JAVA_TYPE && \
+    apt-get install -y zulu-$JAVA_VERSION_MAJOR && \
 
     # set compatible home path
-    ln -s /usr/lib/jvm/adoptopenjdk-$JAVA_VERSION_MAJOR-$JAVA_OPT$JAVA_TYPE-amd64 /usr/lib/jvm/default-jvm && \
+    #ln -s /usr/lib/jvm/adoptopenjdk-$JAVA_VERSION_MAJOR-$JAVA_OPT$JAVA_TYPE-amd64 /usr/lib/jvm/default-jvm && \
 
 
 
