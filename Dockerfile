@@ -55,15 +55,18 @@ RUN apt-get update && \
 
     # get pgp key
 
-    wget https://adoptopenjdk.jfrog.io/adoptopenjdk/api/gpg/key/public && \
-    gpg --no-default-keyring --keyring ./adoptopenjdk-keyring.gpg --import public && \
-    gpg --no-default-keyring --keyring ./adoptopenjdk-keyring.gpg --export --output adoptopenjdk-archive-keyring.gpg && \
-    rm public adoptopenjdk-keyring.gpg && \
-    mv adoptopenjdk-archive-keyring.gpg /usr/share/keyrings && \
-
+    #wget https://adoptopenjdk.jfrog.io/adoptopenjdk/api/gpg/key/public && \
+    #gpg --no-default-keyring --keyring ./adoptopenjdk-keyring.gpg --import public && \
+    #gpg --no-default-keyring --keyring ./adoptopenjdk-keyring.gpg --export --output adoptopenjdk-archive-keyring.gpg && \
+    #rm public adoptopenjdk-keyring.gpg && \
+    #mv adoptopenjdk-archive-keyring.gpg /usr/share/keyrings && \
+    
     # Configure AdoptOpenJDK's apt repository
-    echo "deb [signed-by=/usr/share/keyrings/adoptopenjdk-archive-keyring.gpg] https://adoptopenjdk.jfrog.io/adoptopenjdk/deb $CNAME main" | \
-      tee /etc/apt/sources.list.d/adoptopenjdk.list && \
+    #echo "deb [signed-by=/usr/share/keyrings/adoptopenjdk-archive-keyring.gpg] https://adoptopenjdk.jfrog.io/adoptopenjdk/deb $CNAME main" | \
+    #  tee /etc/apt/sources.list.d/adoptopenjdk.list && \
+
+    apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 0xB1998361219BD9C9
+    echo "deb http://repos.azulsystems.com/debian stable main" | sudo tee /etc/apt/sources.list.d/zulu.list
 
     # refresh
     apt-get update && \
