@@ -64,7 +64,8 @@ RUN apt-get update && \
     # Configure AdoptOpenJDK's apt repository
     #echo "deb [signed-by=/usr/share/keyrings/adoptopenjdk-archive-keyring.gpg] https://adoptopenjdk.jfrog.io/adoptopenjdk/deb $CNAME main" | \
     #  tee /etc/apt/sources.list.d/adoptopenjdk.list && \
-
+    
+    apt-get install software-properties-common
     apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 0xB1998361219BD9C9
     apt-add-repository 'deb http://repos.azulsystems.com/ubuntu stable main'
 
