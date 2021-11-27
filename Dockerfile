@@ -66,7 +66,7 @@ RUN apt-get update && \
     #  tee /etc/apt/sources.list.d/adoptopenjdk.list && \
 
     apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 0xB1998361219BD9C9
-    echo "deb http://repos.azulsystems.com/debian stable main" | sudo tee /etc/apt/sources.list.d/zulu.list
+    apt-add-repository 'deb http://repos.azulsystems.com/ubuntu stable main'
 
     # refresh
     apt-get update && \
