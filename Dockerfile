@@ -65,15 +65,22 @@ RUN apt-get update && \
     #echo "deb [signed-by=/usr/share/keyrings/adoptopenjdk-archive-keyring.gpg] https://adoptopenjdk.jfrog.io/adoptopenjdk/deb $CNAME main" | \
     #  tee /etc/apt/sources.list.d/adoptopenjdk.list && \
     
-    apt-get install software-properties-common && \
-    apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 0xB1998361219BD9C9 && \
-    apt-add-repository 'deb http://repos.azulsystems.com/ubuntu stable main' && \
+    apt-key adv \
+      --keyserver hkp://keyserver.ubuntu.com:80 \
+      --recv-keys 0xB1998361219BD9C9 && \
+
+    # download and install the package that adds 
+    # the Azul APT repository to the list of sources 
+    curl -O https://cdn.azul.com/zulu/bin/zulu-repo_1.0.0-3_all.deb && \
+
+    # install the package
+    sudo apt-get install ./zulu-repo_1.0.0-3_all.deb && \
 
     # refresh
     apt-get update && \
 
     # install
-    apt-get install -y zulu-$JAVA_VERSION_MAJOR && \
+    apt-get install -y zulu17-jdk && \
 
     # set compatible home path
     #ln -s /usr/lib/jvm/adoptopenjdk-$JAVA_VERSION_MAJOR-$JAVA_OPT$JAVA_TYPE-amd64 /usr/lib/jvm/default-jvm && \
